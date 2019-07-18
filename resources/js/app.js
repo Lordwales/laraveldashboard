@@ -8,18 +8,49 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import { Form, HasError, AlertError } from 'vform';
+import moment from 'moment';
+import VueProgressBar from 'vue-progressbar'
+
+const options = {
+  color: '#bffaf3',
+  failedColor: '#874b4b',
+  thickness: '5px',
+  transition: {
+    speed: '2s',
+    opacity: '0.6s',
+    termination: 300
+  },
+  autoRevert: true,
+  location: 'left',
+  inverse: false
+}
+Vue.use(VueProgressBar, options)
+
+window.Form = Form;
+Vue.component(HasError.name, HasError)
+Vue.component(AlertError.name, AlertError)
 import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/dashboard', component: require('./components/Dashboard.vue').default },
-  { path: '/profile', component: require('./components/Profile.vue').default }
+  { path: '/profile', component: require('./components/Profile.vue').default },
+  { path: '/users', component: require('./components/Users.vue').default }
 ]
 
 const router = new VueRouter({
   mode: 'history',
-  routes // short for `routes: routes`
+  routes // short  `routes: routes`
 })
+
+Vue.filter('upText',function(text){
+  return text.charAt(0).toUpperCase() + text.slice(1)
+} );
+
+Vue.filter('MyDate', function(created){
+  return moment(created).format('MMMM DD, YYYY')
+} );
 
 /**
  * The following block of code may be used to automatically register your

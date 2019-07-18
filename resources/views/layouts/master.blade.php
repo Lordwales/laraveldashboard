@@ -96,9 +96,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="#" class="nav-link ">
-                  <i class="fa fa-circle-o nav-icon"></i>
-                  <p>Active Page</p>
+                <router-link to="/users" class="nav-link ">
+                  <i class="fas fa-users pink nav-icon"></i>
+                  <p>Moni</p>
                 </a>
               </li>
               <li class="nav-item">
@@ -149,6 +149,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       <div class="container-fluid">
         <!-- component matched by the route will render here -->
         <router-view></router-view>
+        <vue-progress-bar></vue-progress-bar>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
     </div>
